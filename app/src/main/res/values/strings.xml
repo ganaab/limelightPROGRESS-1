@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Limelight</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="headline">The final start for "Texas Terry" will be the 890th of his career.</string>
+    <string name="WPM">400 WPM</string>
+</resources>
