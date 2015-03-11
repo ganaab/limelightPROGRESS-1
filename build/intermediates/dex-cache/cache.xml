@@ -2,39 +2,39 @@
 <items version="2" >
 
     <item
-        jar="/Users/iguest/AndroidStudioProjects/AndroidFinal/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/libs/internal_impl-21.0.3.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
-        <dex dex="/Users/iguest/AndroidStudioProjects/AndroidFinal/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-803246a8d87a668d61a9e7f5baafeb868ec09ff1.jar" />
-    </item>
-    <item
-        jar="/Users/iguest/AndroidStudioProjects/AndroidFinal/app/build/intermediates/exploded-aar/com.andrewgiang.spritzertextview/library/0.3.4/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="eb3ce69d4ffcf960dcec47150eb673d96897a559">
-        <dex dex="/Users/iguest/AndroidStudioProjects/AndroidFinal/app/build/intermediates/pre-dexed/debug/classes-f643070e6132ef3d257b5922423687283fe9c1eb.jar" />
-    </item>
-    <item
-        jar="/Users/iguest/AndroidStudioProjects/AndroidFinal/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
-        <dex dex="/Users/iguest/AndroidStudioProjects/AndroidFinal/app/build/intermediates/pre-dexed/debug/classes-c76dcf68373ecae597e996206d0c1b3a975400c9.jar" />
-    </item>
-    <item
-        jar="/Users/iguest/AndroidStudioProjects/AndroidFinal/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
-        <dex dex="/Users/iguest/AndroidStudioProjects/AndroidFinal/app/build/intermediates/pre-dexed/debug/classes-c9f508b6ea1f643e831f2601a1987546c430c824.jar" />
-    </item>
-    <item
-        jar="/Users/iguest/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/21.0.3/support-annotations-21.0.3.jar"
+        jar="C:\Users\Ganaa\AppData\Local\Android\sdk1\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
-        <dex dex="/Users/iguest/AndroidStudioProjects/AndroidFinal/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.3-4af7d6332c26af2f77965e6927554b935e27e503.jar" />
+        <dex dex="C:\Users\Ganaa\Documents\limelightPROGRESS-1\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-fd806554f82822da72d4009b40c14ae010c83b4c.jar" />
+    </item>
+    <item
+        jar="C:\Users\Ganaa\Documents\limelightPROGRESS-1\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
+        <dex dex="C:\Users\Ganaa\Documents\limelightPROGRESS-1\app\build\intermediates\pre-dexed\debug\classes-63a4e95cd04314216c68491cf4e2c810e0b50495.jar" />
+    </item>
+    <item
+        jar="C:\Users\Ganaa\Documents\limelightPROGRESS-1\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.3\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
+        <dex dex="C:\Users\Ganaa\Documents\limelightPROGRESS-1\app\build\intermediates\pre-dexed\debug\classes-3ebbfada54c0525b3bd226d6a99c62e657999000.jar" />
+    </item>
+    <item
+        jar="C:\Users\Ganaa\Documents\limelightPROGRESS-1\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\libs\internal_impl-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="C:\Users\Ganaa\Documents\limelightPROGRESS-1\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-e638f76b95bfad295d5c14d823c3b12142cee8c4.jar" />
+    </item>
+    <item
+        jar="C:\Users\Ganaa\Documents\limelightPROGRESS-1\app\build\intermediates\exploded-aar\com.andrewgiang.spritzertextview\library\0.3.4\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="eb3ce69d4ffcf960dcec47150eb673d96897a559">
+        <dex dex="C:\Users\Ganaa\Documents\limelightPROGRESS-1\app\build\intermediates\pre-dexed\debug\classes-4b1b63a780464051aa7464ea0960dc5abe195ac9.jar" />
     </item>
 
 </items>
