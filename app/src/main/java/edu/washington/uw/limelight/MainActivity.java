@@ -18,15 +18,14 @@ import android.widget.TextView;
 import com.andrewgiang.textspritzer.lib.Spritzer;
 import com.andrewgiang.textspritzer.lib.SpritzerTextView;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class MainActivity extends Activity {
@@ -36,6 +35,10 @@ public class MainActivity extends Activity {
     private ParcelFileDescriptor file;
     private DownloadManager dm;
     private long enqueue;
+    private int counter;
+    private Map<String, String> x = new HashMap<>();
+    private ArrayList<String> ycuz = new ArrayList<>();
+    private String words;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,19 +93,38 @@ public class MainActivity extends Activity {
             json = new String(buffer, "UTF-8");
             Log.d("sfds", json);
             System.out.println(json);
-            JSONObject obj = new JSONObject(json);
+//            JSONObject obj = new JSONObject(json);
 
-            System.out.print(json);
-            JSONObject article = obj.getJSONObject("article");
-            JSONArray array = obj.getJSONArray("article");
-            //Log.d("array", array.toString());
-            for(int i = 0; i < array.length(); i++) {
-                JSONObject single = array.getJSONObject(i);
+            System.out.println("breaker");
+            String[] titles = json.split(" \"title\":\"");
+            System.out.println(titles[0]);
+            System.out.println("breaker");
+            System.out.println(titles[1]);
+            System.out.println("breaker");
+            System.out.println(titles[2]);
+            System.out.println("breaker");
+            System.out.println(titles[3]);
+            for (int i = 1; i < titles.length; i++) {
+                String[] gettingArticle = titles[i].split("\"article\":\"");
+//                System.out.println("breaker2");
+//                System.out.println(gettingArticle[0].substring(0,gettingArticle[0].length() - 6));
+//                System.out.println("breaker3");
+//                System.out.println(gettingArticle[1].substring(0,gettingArticle[1].length() - 8));
 
-                System.out.println(single.toString());
+                x.put(gettingArticle[0].substring(0, gettingArticle[0].length()), gettingArticle[1].substring(0, gettingArticle[1].length() - 6));
+                ycuz.add(gettingArticle[0].substring(0, gettingArticle[0].length()));
             }
-            JSONObject article1 = obj.getJSONObject("article");
-            System.out.println(article1.toString());
+
+//            JSONObject article = obj.getJSONObject("article");
+//            JSONArray array = obj.getJSONArray("article");
+//            //Log.d("array", array.toString());
+//            for(int i = 0; i < array.length(); i++) {
+//                JSONObject single = array.getJSONObject(i);
+//
+//                System.out.println(single.toString());
+//            }
+//            JSONObject article1 = obj.getJSONObject("article");
+//            System.out.println(article1.toString());
 //            JSONObject math = obj.getJSONObject("Math");
 //            Topic mathematics = loadQuiz(math);
 //            JSONObject physics = obj.getJSONObject("Physics");
@@ -115,8 +137,26 @@ public class MainActivity extends Activity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        final TextView headline = (TextView) findViewById(R.id.headline);
+        String input = ycuz.get(counter);
+        headline.setText(input);
+        words = x.get(headline.getText().toString());
+        System.out.println(x.size());
+        headline.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (counter >= x.size()-1) {
+                    counter = 0;
+                } else {
+                    counter++;
+                }
+                String input = ycuz.get(counter);
+                headline.setText(input);
+                words = x.get(headline.getText().toString());
 
-
+                mSpritzerTextView.setSpritzText(words);
+            }
+        });
 //        JSONArray jsonMainArr = new JSONArray(mainJSON.getJSONArray("source"));
 //        for (int i = 0; i < jsonMainArr.length(); i++) {  // **line 2**
 //            JSONObject childJSONObject = jsonMainArr.getJSONObject(i);
@@ -135,17 +175,18 @@ public class MainActivity extends Activity {
 //        }
 
         // Spritzing
-        final String words = "The series continues with Harry Potter and the Chamber of Secrets describing Harry's second year at Hogwarts. " +
-                "He and his friends investigate a 50-year-old mystery that appears tied to recent sinister events at the school. Ron's younger " +
-                "sister, Ginny Weasley, enrolls in her first year at Hogwarts, and finds an old notebook which turns out to be Voldemort's diary" +
-                " from his school days. Ginny becomes possessed by Voldemort through the diary and unconsciously opens the \"Chamber of Secrets,\"" +
-                " unleashing an ancient monster which begins attacking students at Hogwarts. The novel delves into the history of Hogwarts and a legend" +
-                " revolving around the Chamber that soon frightened everyone in the school. The book also introduces a new Defence Against the Dark Arts" +
-                " teacher, Gilderoy Lockhart, a highly cheerful, self-conceited know-it-all who later turns out to be a fraud. For the first time, Harry" +
-                " realises that racial prejudice exists in the wizarding world even before, and he learns that Voldemort's reign of terror was often" +
-                " directed at wizards who were descended from Muggles. Harry also learns that his ability to speak Parseltongue, the language of snakes," +
-                " is rare and often associated with the Dark Arts. The novel ends after Harry saves Ginny's life by destroying a basilisk and the enchanted" +
-                " diary which has been the source of the problems.";
+
+//        final String words = "The series continues with Harry Potter and the Chamber of Secrets describing Harry's second year at Hogwarts. " +
+//                "He and his friends investigate a 50-year-old mystery that appears tied to recent sinister events at the school. Ron's younger " +
+//                "sister, Ginny Weasley, enrolls in her first year at Hogwarts, and finds an old notebook which turns out to be Voldemort's diary" +
+//                " from his school days. Ginny becomes possessed by Voldemort through the diary and unconsciously opens the \"Chamber of Secrets,\"" +
+//                " unleashing an ancient monster which begins attacking students at Hogwarts. The novel delves into the history of Hogwarts and a legend" +
+//                " revolving around the Chamber that soon frightened everyone in the school. The book also introduces a new Defence Against the Dark Arts" +
+//                " teacher, Gilderoy Lockhart, a highly cheerful, self-conceited know-it-all who later turns out to be a fraud. For the first time, Harry" +
+//                " realises that racial prejudice exists in the wizarding world even before, and he learns that Voldemort's reign of terror was often" +
+//                " directed at wizards who were descended from Muggles. Harry also learns that his ability to speak Parseltongue, the language of snakes," +
+//                " is rare and often associated with the Dark Arts. The novel ends after Harry saves Ginny's life by destroying a basilisk and the enchanted" +
+//                " diary which has been the source of the problems.";
 
         mSpritzerTextView = (SpritzerTextView)
 
@@ -162,134 +203,115 @@ public class MainActivity extends Activity {
         final String[] wordsArray = words.split(" ");
         mProgressBar.setMax(wordsArray.length);
         final ImageView play = (ImageView) findViewById(R.id.play);
-        play.setOnClickListener(new View.OnClickListener()
-
-                                {
-                                    @Override
-                                    public void onClick(View v) {
-                                        ImageView play = (ImageView) findViewById(R.id.play);
-                                        if (play.getTag() == null || play.getTag().equals("start")) {
-                                            mSpritzerTextView.play();
-                                            play.setImageResource(R.drawable.pausebutton);
-                                            play.setTag("stop");
-                                        } else {
-                                            mSpritzerTextView.pause();
-                                            play.setImageResource(R.drawable.playbutton);
-                                            play.setTag("start");
-                                        }
-                                    }
-                                }
+        play.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ImageView play = (ImageView) findViewById(R.id.play);
+                if (play.getTag() == null || play.getTag().equals("start")) {
+                    mSpritzerTextView.play();
+                    play.setImageResource(R.drawable.pausebutton);
+                    play.setTag("stop");
+                } else {
+                    mSpritzerTextView.pause();
+                    play.setImageResource(R.drawable.playbutton);
+                    play.setTag("start");
+                }
+            }
+        }
 
         );
         ImageView fastforward = (ImageView) findViewById(R.id.forward);
         ImageView rewind = (ImageView) findViewById(R.id.rewind);
 
-        fastforward.setOnClickListener(new View.OnClickListener()
+        fastforward.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               mSpritzerTextView.pause();
+               play.setImageResource(R.drawable.playbutton);
+               play.setTag("start");
 
-                                       {
-                                           @Override
-                                           public void onClick(View v) {
-                                               mSpritzerTextView.pause();
-                                               play.setImageResource(R.drawable.playbutton);
-                                               play.setTag("start");
+               int pos = mSpritzerTextView.getCurrentWordIndex();
+               System.out.println(pos);
 
-                                               int pos = mSpritzerTextView.getCurrentWordIndex();
-                                               System.out.println(pos);
+               ArrayList<Integer> indexes = new ArrayList<Integer>();
+               int newStart = 0;
+               for (int i = 0; i < wordsArray.length; i++) {
+                   if (wordsArray[i].endsWith(".")) {
+                       indexes.add(i);
+                   }
+               }
+               for (int i = 0; i < indexes.size(); i++) {
+                   if (pos <= indexes.get(i)) {
+                       if (i + 1 < indexes.size()) {
+                           newStart = indexes.get(i + 1);
+                       }
+                   }
+               }
+               System.out.println(newStart);
+               mSpritzerTextView.setSpritzText(words.substring(newStart));
+               System.out.println(indexes);
+           }
+       });
+        rewind.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View v) {
+              mSpritzerTextView.pause();
+              play.setImageResource(R.drawable.playbutton);
+              play.setTag("start");
 
-                                               ArrayList<Integer> indexes = new ArrayList<Integer>();
-                                               int newStart = 0;
-                                               for (int i = 0; i < wordsArray.length; i++) {
-                                                   if (wordsArray[i].endsWith(".")) {
-                                                       indexes.add(i);
-                                                   }
-                                               }
-                                               for (int i = 0; i < indexes.size(); i++) {
-                                                   if (pos <= indexes.get(i)) {
-                                                       if (i + 1 < indexes.size()) {
-                                                           newStart = indexes.get(i + 1);
-                                                       }
-                                                   }
-                                               }
-                                               System.out.println(newStart);
-                                               mSpritzerTextView.setSpritzText(words.substring(newStart));
-                                               System.out.println(indexes);
-                                           }
-                                       }
+              int pos = mSpritzerTextView.getCurrentWordIndex();
+              System.out.println(pos);
+              ArrayList<Integer> indexes = new ArrayList<Integer>();
+              int newStart = 0;
+              for (int i = 0; i < wordsArray.length; i++) {
+                  if (wordsArray[i].endsWith(".")) {
+                      indexes.add(i);
+                  }
+              }
+              for (int i = 0; i < indexes.size(); i++) {
+                  if (pos <= indexes.get(i)) {
+                      if (i != 0) {
+                          newStart = indexes.get(i - 1);
+                      }
+                  }
+              }
+              mSpritzerTextView.setSpritzText(words.substring(newStart));
+              System.out.println(indexes);
+          }
+      });
 
-        );
-        rewind.setOnClickListener(new View.OnClickListener()
+        mSpritzerTextView.setOnCompletionListener(new Spritzer.OnCompletionListener() {
+          @Override
+          public void onComplete() {
+              mSpritzerTextView.pause();
+              play.setImageResource(R.drawable.playbutton);
+              play.setTag("start");
+          }
+      });
 
-                                  {
-                                      @Override
-                                      public void onClick(View v) {
-                                          mSpritzerTextView.pause();
-                                          play.setImageResource(R.drawable.playbutton);
-                                          play.setTag("start");
+      mSeekBarWpm = (SeekBar) findViewById(R.id.seekBarWpm);
 
-                                          int pos = mSpritzerTextView.getCurrentWordIndex();
-                                          System.out.println(pos);
-                                          ArrayList<Integer> indexes = new ArrayList<Integer>();
-                                          int newStart = 0;
-                                          for (int i = 0; i < wordsArray.length; i++) {
-                                              if (wordsArray[i].endsWith(".")) {
-                                                  indexes.add(i);
-                                              }
-                                          }
-                                          for (int i = 0; i < indexes.size(); i++) {
-                                              if (pos <= indexes.get(i)) {
-                                                  if (i != 0) {
-                                                      newStart = indexes.get(i - 1);
-                                                  }
-                                              }
-                                          }
-                                          mSpritzerTextView.setSpritzText(words.substring(newStart));
-                                          System.out.println(indexes);
-                                      }
-                                  }
+        mSeekBarWpm.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            int progressChanged = 0;
 
-        );
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                progressChanged = progress;
+                TextView wpm = (TextView) findViewById(R.id.textView2);
+                wpm.setText(mSeekBarWpm.getProgress() * 1 + 1 + " WPM");
+                mSpritzerTextView.setWpm(mSeekBarWpm.getProgress() * 1 + 1);
+            }
 
-        mSpritzerTextView.setOnCompletionListener(new Spritzer.OnCompletionListener()
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
 
-                                                  {
-                                                      @Override
-                                                      public void onComplete() {
-                                                          mSpritzerTextView.pause();
-                                                          play.setImageResource(R.drawable.playbutton);
-                                                          play.setTag("start");
-                                                      }
-                                                  }
+            }
 
-        );
-        mSeekBarWpm = (SeekBar)
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
 
-                findViewById(R.id.seekBarWpm);
-
-        mSeekBarWpm.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener()
-
-                                               {
-                                                   int progressChanged = 0;
-
-                                                   @Override
-                                                   public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                                                       progressChanged = progress;
-                                                       TextView wpm = (TextView) findViewById(R.id.textView2);
-                                                       wpm.setText(mSeekBarWpm.getProgress() * 10 + " WPM");
-                                                       mSpritzerTextView.setWpm(mSeekBarWpm.getProgress() * 10);
-                                                   }
-
-                                                   @Override
-                                                   public void onStartTrackingTouch(SeekBar seekBar) {
-
-                                                   }
-
-                                                   @Override
-                                                   public void onStopTrackingTouch(SeekBar seekBar) {
-
-                                                   }
-                                               }
-
-        );
+            }
+      });
     }
 
     public void download() {

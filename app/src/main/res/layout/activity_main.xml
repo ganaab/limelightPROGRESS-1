@@ -128,8 +128,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/seekBarWpm"
-            android:progress="40"
-            android:indeterminate="false" />
+            android:progress="400"
+            android:indeterminate="false"
+            android:max="1000" />
     </LinearLayout>
 
     <RelativeLayout
